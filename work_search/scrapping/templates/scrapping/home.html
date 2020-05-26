@@ -1,0 +1,27 @@
+{% extends 'scrapping/base.html' %}
+
+{% block content %}
+{% for obj in object_list %}
+<div class="card my-5">
+  <h5 class="card-header"><a href="{{ obj.url }}">{{ obj.title }}</a></h5>
+  <div class="card-body">
+    <h5 class="card-title">{{ obj.company }}</h5>
+    <p class="card-text">{{ obj.description }}</p>
+      <p>{{ obj.city }} | {{ obj.language }} | <small>{{ obj.timestamp|date:"d-M-y" }}</small></p>
+  </div>
+</div>
+{% empty %}
+  <h3>Жаль, ничего нет</h3>
+{% endfor %}
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <form method="GET" action="">
+  <div class="form-group">
+    {{form.as_p}}
+  </div>
+ <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  </div>
+</div>
+
+{% endblock %}
